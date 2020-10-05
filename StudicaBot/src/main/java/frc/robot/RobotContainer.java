@@ -7,10 +7,14 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.TeleopDrive;
+import frc.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -24,15 +28,12 @@ public class RobotContainer {
 
   OI oi = new OI();
 
-  Drivetrain drive = new Drivetrain(0, 1, 2, 3, Motortype.kBrushless);
+  Drivetrain drive = new Drivetrain(0, 1, 2, 3, MotorType.kBrushless);
 
-  TeleopDrive teleopDrive = new TeleopDrive(this.drive, () -> oi.getJoystick(oi.driver, Hand.kLeft, 0.4), () -> oi.driveControl());
+  TeleopDrive teleopDrive = new TeleopDrive(this.drive, () -> oi.getJoystickX(oi.driver, Hand.kLeft, 0.4), () -> oi.driveControl());
 
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-
-
+  ExampleSubsystem m_subsystem = new ExampleSubsystem();
+  ExampleCommand m_autoCommand = new ExampleCommand(m_subsystem);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

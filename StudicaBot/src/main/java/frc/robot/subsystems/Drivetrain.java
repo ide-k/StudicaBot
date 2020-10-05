@@ -9,6 +9,16 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.ControlType;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.XboxController;
+
+import frc.robot.Constants;
+import frc.robot.Robot;
+
 public class Drivetrain extends SubsystemBase {
 
   public CANSparkMax leftM;
@@ -51,8 +61,8 @@ public class Drivetrain extends SubsystemBase {
 
   public void tankDrive(double left, double right)
   {
-    leftM.set();
-    rightM.set();
+    leftM.set(left);
+    rightM.set(right);
   }
 
   @Override

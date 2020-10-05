@@ -16,4 +16,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    public static final double TURN_WEIGHT_FACTOR = 0.1;
+    
 }

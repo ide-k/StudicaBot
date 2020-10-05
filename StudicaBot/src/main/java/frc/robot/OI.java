@@ -61,7 +61,7 @@ public class OI {
 
     public double getJoystickX(XboxController xbox, Hand h, double deadzone)
     {
-        if(xbox.getPort == 0 && h == Hand.kLeft)
+        if(xbox.getPort() == 0 && h == Hand.kLeft)
         {
             return deadzoneTurn(xbox.getX(h), deadzone);
         }
