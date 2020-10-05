@@ -21,6 +21,13 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+
+  OI oi = new OI();
+
+  Drivetrain drive = new Drivetrain(0, 1, 2, 3, Motortype.kBrushless);
+
+  TeleopDrive teleopDrive = new TeleopDrive(this.drive, () -> oi.getJoystick(oi.driver, Hand.kLeft, 0.4), () -> oi.driveControl());
+
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
